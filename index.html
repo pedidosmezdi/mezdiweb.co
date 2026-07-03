@@ -1,6 +1,6 @@
 HTML
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@ HTML
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- VARIABLES Y CONFIGURACIÓN BASE --- */
+        /* --- VARIABLES AND BASE CONFIGURATION --- */
         :root {
             --indigo-dark: #0F172A;
             --indigo-denim: #1E3A8A;
@@ -44,7 +44,7 @@ HTML
             letter-spacing: -1px;
         }
 
-        /* --- MENÚ DE NAVEGACIÓN INTERACTIVO --- */
+        /* --- INTERACTIVE NAVIGATION MENU --- */
         header {
             position: fixed;
             top: 0;
@@ -73,10 +73,24 @@ HTML
             color: var(--indigo-light);
         }
 
+        .menu-toggle i {
+            transition: transform 0.3s ease;
+        }
+
         nav ul {
             display: flex;
+            flex-wrap: wrap;
             list-style: none;
             gap: 30px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
         }
 
         nav a {
@@ -154,7 +168,7 @@ HTML
 
         .hero-content p {
             font-size: 1.2rem;
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto 30px;
             color: #94A3B8;
             font-weight: 300;
@@ -183,7 +197,7 @@ HTML
             transform: translateY(-3px);
         }
 
-        /* --- SECCIONES GENERALES --- */
+        /* --- GENERAL SECTIONS --- */
         section {
             padding: 100px 10% 80px;
         }
@@ -200,13 +214,25 @@ HTML
             color: var(--indigo-light);
         }
 
-        /* --- QUIENES SOMOS --- */
+        /* --- ABOUT US --- */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
             margin-bottom: 50px;
+        }
+
+        .about-video-box {
+            min-height: 420px;
+        }
+
+        .about-video-box video {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.22);
         }
 
         .about-text p {
@@ -216,10 +242,139 @@ HTML
             margin-bottom: 20px;
         }
 
+        .about-text .btn-modern {
+            margin-top: 20px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form label {
+            font-size: 0.9rem;
+            color: #CBD5E1;
+        }
+
+        .contact-input,
+        .contact-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: #F8FAFC;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .contact-input:focus,
+        .contact-textarea:focus {
+            outline: none;
+            border-color: var(--indigo-light);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .contact-submit {
+            width: fit-content;
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+        }
+
+        .about-policy-card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
+            border-radius: 28px;
+            padding: 36px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .about-policy-card h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: #7c3aed;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .about-policy-card p {
+            margin: 0;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-policy-card p strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .about-policy-card .policy-footnote {
+            margin-top: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 700;
+        }
+
+        .integrates-image {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .integrates-image img,
+        .product-card .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+            transform-origin: center center;
+            transition: transform 0.35s ease, filter 0.35s ease, opacity 0.35s ease;
+            will-change: transform;
+        }
+
+        .integrates-image:hover img {
+            transform: scale(1.08);
         }
 
         .about-card {
@@ -246,7 +401,7 @@ HTML
             font-size: 1.3rem;
         }
 
-        /* --- CATÁLOGO DE PRODUCTOS --- */
+        /* --- PRODUCT CATALOG --- */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -274,7 +429,7 @@ HTML
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.2) 70%);
+            background: linear-gradient(0deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.22) 60%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -283,18 +438,96 @@ HTML
         }
 
         .product-card:hover .product-img {
-            transform: scale(1.1);
+            transform: scale(1.08);
+        }
+
+        .product-overlay .product-badge {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.16);
+            color: var(--indigo-light);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .product-overlay h3 {
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .product-overlay p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: #E2E8F0;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .product-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            transition: var(--transition);
+        }
+
+        .product-action:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .product-card:hover .product-overlay {
             background: linear-gradient(0deg, var(--indigo-denim) 0%, rgba(15, 23, 42, 0.4) 100%);
         }
 
-        /* --- MERCADO Y UBICACIÓN --- */
+        /* --- MARKET & LOCATION --- */
         .market-location {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
+            align-items: start;
+        }
+
+        .market-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 24px;
+            min-height: 100%;
+        }
+
+        .contact-info {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 28px;
+        }
+
+        .market-info form {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .market-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .market-info p {
+            color: #94A3B8;
+            margin-bottom: 18px;
+            line-height: 1.8;
         }
 
         .map-box {
@@ -327,7 +560,7 @@ HTML
             color: var(--indigo-light);
         }
 
-        /* --- CARRUSEL INFINITO DE CLIENTES --- */
+        /* --- INFINITE CLIENT CAROUSEL --- */
         .slider-container {
             width: 100%;
             height: auto;
@@ -360,8 +593,11 @@ HTML
 
         .slider-track {
             display: flex;
-            width: calc(250px * 10);
-            animation: scrollInfinito 25s linear infinite;
+            animation: scrollInfinito 30s linear infinite;
+            gap: 30px;
+            width: max-content;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
         }
 
         .slider-container:hover .slider-track {
@@ -369,7 +605,8 @@ HTML
         }
 
         .slide {
-            width: 250px;
+            flex: 0 0 250px;
+            min-width: 250px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -378,15 +615,18 @@ HTML
 
         .slide img, .slide video {
             max-width: 100%;
-            max-height: 70px;
+            max-height: 80px;
+            min-width: 160px;
+            min-height: 60px;
             object-fit: contain;
+            display: block;
             filter: grayscale(100%) opacity(40%);
-            transition: var(--transition);
+            transition: transform 0.35s ease, filter 0.35s ease, opacity 0.35s ease;
         }
 
         .slide:hover img, .slide:hover video {
             filter: grayscale(0%) opacity(100%);
-            transform: scale(1.08);
+            transform: scale(1.12) translateY(-4px);
         }
 
         /* --- FOOTER --- */
@@ -399,7 +639,7 @@ HTML
             font-size: 0.9rem;
         }
 
-        /* --- ANIMACIONES --- */
+        /* --- ANIMATIONS --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -413,15 +653,46 @@ HTML
 
         @keyframes scrollInfinito {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 5)); }
+            100% { transform: translateX(calc(-50% - 15px)); }
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             header { padding: 20px; }
-            nav { display: none; }
+            .menu-toggle { display: block; }
+            nav {
+                position: absolute;
+                top: 100%;
+                right: 20px;
+                width: calc(100% - 40px);
+                background: rgba(15, 23, 42, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 18px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+                z-index: 1001;
+            }
+
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
             .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1rem; max-width: 100%; }
             .about-container, .market-location { grid-template-columns: 1fr; }
+            .about-video-box, .map-box { height: auto; }
             section { padding: 60px 5%; }
         }
 
@@ -444,6 +715,43 @@ HTML
             object-fit: cover;
             display: block;
         }
+
+        .floating-chat-group {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .floating-chat-link {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .floating-chat-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-chat-link.whatsapp {
+            background-color: #25D366;
+        }
+
+        .floating-chat-link.telegram {
+            background-color: #0088cc;
+        }
     </style>
 </head>
 
@@ -451,92 +759,208 @@ HTML
 
     <header>
         <a href="#" class="logo">MEZDI<span>.</span></a>
-        <nav>
+        <button class="menu-toggle" aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav id="primary-navigation">
             <ul>
                 <li><a href="#home" class="active">HOME</a></li>
+                <li><a href="#company">COMPANY</a></li>
+                <li><a href="#integrates">INTEGRATES</a></li>
                 <li><a href="#about">ABOUT</a></li>
-                <li><a href="#catalogo">PRODUCTS</a></li>
-                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#platform">PLATFORM</a></li>
+                <li><a href="#catalog">PRODUCTS</a></li>
+                <li><a href="#sustainability">SUSTAINABILITY</a></li>
+                <li><a href="#stands">STANDS</a></li>
+                <li><a href="#clients">CLIENTS</a></li>
                 <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#our-word">OUR WORD</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <video class="hero-video-bg" autoplay loop muted playsinline>
-            <source src="Video_corporativo_Idioma_del_v(1).mp4" type="video/mp4">
+            <source src="Video_corporativo_Idioma_del_v.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>MEZDI</h1>
             <p>USA · MEXICO · CHINA · HONG KONG · LATAM</p>
-            <a href="#about" class="btn-modern">EXPLORE MEZDI</a>
+            <a href="#company" class="btn-modern">EXPLORE MEZDI</a>
         </div>
+    </section>
+    
+    <section id="company">
+        <h2 class="section-title">COMPANY <span>OVERVIEW</span></h2>
+
+        <div class="about-container">
+            <div class="about-text">
+                <p><strong>History:</strong> MEZDI has more than 20 years of global denim expertise, supporting brands with production, sourcing, and logistics hubs in Mexico, China, Panama, and Hong Kong.</p>
+                <p><strong>Vision:</strong> To simplify and secure denim sourcing for brands, designers, and retailers around the world.</p>
+                <p><strong>Mission:</strong> To deliver dependable denim supply through integrated digital tools, scalable production, and responsive global operations.</p>
+                <p><strong>Values:</strong> Quality, Reliability, Integrity, and People.</p>
+                <p style="margin-top:16px;"><a href="company-profile.pdf" class="btn-modern">Download Company Profile</a></p>
+            </div>
+
+            <div class="about-video-box">
+                <video controls autoplay loop muted playsinline poster="miniatura-video.jpg" class="about-video">
+                    <source src="Video_corporativo_Idioma_del_v.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+        </div>
+
+        <div id="integrates" class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-industry"></i>
+                <h3>MEZDI Integrates</h3>
+                <p>An experienced and highly qualified team in the denim sector.</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li>• Over 20 years of industry expertise.</li>
+                    <li>• Manufacturing facilities in Mexico since 2012.</li>
+                    <li>• Manufacturing facilities in China since 2022.</li>
+                    <li>• Logistics hub in Panama.</li>
+                    <li>• Financial and logistics hub in Hong Kong.</li>
+                    <li>• Consistent year-over-year growth.</li>
+                    <li>• Agile adaptability to global market shifts.</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: 600;">An integrated digital platform featuring:</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 12px;">
+                    <li><strong>MEZDI FinTrade System™</strong> – International Financial Support</li>
+                    <li><strong>MEZDI Connect Portal™</strong> – On-Time Delivery Guarantee</li>
+                    <li><strong>MEZDI DNA System™</strong> – Commitment to Total Quality</li>
+                </ul>
+            </div>
+            <div class="integrates-image">
+                <img src="demin-5.jpeg" alt="Denim production and quality" />
+            </div>
+        </div>
+
     </section>
 
     <section id="about">
         <h2 class="section-title">MEZDI <span>QUALITY POLICY</span></h2>
         
         <div class="about-container">
-            <div class="about-text">
+            <div class="about-policy-card">
+                <h3>QUALITY POLICY</h3>
                 <p><strong>Vision:</strong> Making DENIM supply easier, more efficient, and more reliable for brands, designers, and retailers globally.</p>
                 <p><strong>Mission:</strong> Streamlining DENIM supply to make it easier, more efficient, and more reliable for global brands, designers, and retailers.</p>
                 <p><strong>Values:</strong> Quality, Punctuality, Integrity, and Human Development.</p>
+                <p class="policy-footnote"><strong>We don’t just make denim. We build value for your business.</strong></p>
             </div>
 
             <div class="about-video-box">
                 <video controls poster="miniatura-video.jpg" class="about-video">
-                    <source src="Video_cinematográfico_en_españ(1).mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de este video.
+                    <source src="Video_cinematográfico_en_españ.mp4" type="video/mp4">
+                    Your browser does not support video playback.
                 </video>
-            </div>
-        </div>
-
-        <div class="about-grid">
-            <div class="about-card">
-                <i class="fa-solid fa-industry"></i>
-                <h3>MEZDI Integrates</h3>
-                <p>An experienced and highly qualified team in the denim sector. Over 20 years of industry expertise. Manufacturing facilities in Mexico since 2012. Manufacturing facilities in China since 2022. Logistics hub in Panama. Financial and logistics hub in Hong Kong. Consistent year-over-year growth. Agile adaptability to global market shifts. An integrated digital platform featuring: MEZDI FinTrade System™, MEZDI Connect Portal™, and MEZDI DNA System™.</p>
-            </div>
-            <div class="about-card">
-                <i class="fa-solid fa-earth-americas"></i>
-                <h3>QUALITY POLICY</h3>
-                <p>Vision: Making DENIM supply easier, more efficient, and more reliable for brands, designers, and retailers globally. Mission: Streamlining DENIM supply to make it easier, more efficient, and more reliable for global brands, designers, and retailers. Values: Quality, Punctuality, Integrity, and Human Development. We don't just make denim. We build value for your business.</p>
             </div>
         </div>
     </section>
 
-    <section id="catalogo">
+    <section id="value-proposition">
+        <h2 class="section-title">MEZDI <span>EXISTS TO DELIVER ITS VALUE PROPOSITION</span></h2>
+        <div class="about-card" style="background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25); padding: 36px; border-radius: 28px;">
+            <p style="color: #cbd5e1; line-height: 1.8; font-size: 1rem; margin-bottom: 24px;">MEZDI is structured to guarantee its value proposition through three core pillars:</p>
+            <ul style="list-style: none; padding-left: 0; margin: 0; display: grid; gap: 16px; color: #cbd5e1; font-size: 1rem; line-height: 1.8;">
+                <li>✔ Consistent, certified quality</li>
+                <li>✔ Secure, on-time deliveries</li>
+                <li>✔ International financial support</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="showcase-image">
+        <h2 class="section-title">MEZDI <span>INSIGHT</span></h2>
+        <div class="integrates-image" style="max-width: 100%; margin: 0 auto;">
+            <img src="demin-4.jpeg" alt="Denim production and quality">
+        </div>
+    </section>
+
+    <section id="platform">
+        <h2 class="section-title">MEZDI <span>PLATFORM</span></h2>
+        <div class="about-text" style="max-width: 860px; margin-bottom: 40px; color: #cbd5e1; line-height: 1.8;">
+            <p>The MEZDI platform is a comprehensive digital ecosystem designed to drive our clients' growth simply, safely, and efficiently.</p>
+            <p>Through two specialized systems and a digital portal, MEZDI integrates operations, real-time insights, and strategic support, consistently delivering our value proposition at every stage of the business.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-dna"></i>
+                <h3>MEZDI DNA System™ | Commitment to Total Quality</h3>
+                <p>MEZDI DNA™ is the core of our commitment to total quality. Simply put, it is the system that connects all the dots so that every single meter of DENIM you receive is backed by certified quality.</p>
+                <p style="margin-top: 20px; font-weight: 700;">What does MEZDI DNA™ include for your peace of mind?</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 18px;">
+                    <li style="margin-bottom: 16px;"><strong>Detailed Technical Specs:</strong> Before the denim leaves our hands, you receive an exact technical data sheet (tech pack). You know exactly what you are buying—zero surprises.</li>
+                    <li style="margin-bottom: 16px;"><strong>Quality Certificates:</strong> Every batch undergoes strict laboratory testing and certifications. There are no "maybes" here; it's a guaranteed "always."</li>
+                    <li style="margin-bottom: 16px;"><strong>Continuous Supplier Audits:</strong> We don't just rely on paperwork. We conduct on-site audits to ensure every supplier meets our rigid standards.</li>
+                    <li><strong>Certificates of Origin:</strong> We provide absolute certainty regarding the origin of your denim, giving you the clear insights needed to make informed international trade decisions.</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>MEZDI Connect Portal™ | On-Time Delivery Guarantee</h3>
+                <p>This is a space where you don't just view your orders—you gain complete control over them. MEZDI Connect Portal™ is the ultimate tool where the promise of on-time delivery becomes reality because you see everything in real time, effortlessly.</p>
+                <p style="margin-top: 20px; font-weight: 700;">What makes MEZDI Connect Portal™ special?</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 18px;">
+                    <li style="margin-bottom: 16px;"><strong>You Own the Process:</strong> No middlemen. You manage your orders, review your accounts, and track shipments in real time. It’s like having the steering wheel of your entire supply chain in one place.</li>
+                    <li style="margin-bottom: 16px;"><strong>Everything in Real Time:</strong> Want to know if your order has shipped or what production stage it's in? The portal shows you instantly. Forget guessing; everything is clear and updated.</li>
+                    <li><strong>User-Friendly & Intuitive:</strong> The dashboard is built to be clean and intuitive. You don't need to be a tech guru to manage your operation.</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>MEZDI FinTrade System™ | International Financial Support</h3>
+                <p><strong>Financial muscle for our clients:</strong></p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 18px;">
+                    <li style="margin-bottom: 16px;"><strong>Tailored Financing:</strong> This isn't your typical, cumbersome bank credit. This is a system designed to say: "Need to scale right now? We provide the liquidity you need to grow without roadblocks."</li>
+                    <li style="margin-bottom: 16px;"><strong>Speed and Simplicity:</strong> Forget endless paperwork. MEZDI FinTrade™ moves fast. Simply put: you lock in your orders, we help finance them, and you focus on generating value for your brand.</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: 700;">MEZDI integrates: Quality, On-Time Delivery, and Financing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog">
         <h2 class="section-title">PRODUCT <span>CATALOG</span></h2>
         <div class="catalog-grid">
             <div class="product-card">
-                <img src="DenimMezdi (1).png" alt="Natural DENIM Line" class="product-img">
+                <img src="PM.jpeg" alt="Natural DENIM Line" class="product-img">
                 <div class="product-overlay">
+                    <span class="product-badge">Premium</span>
                     <h3>Natural DENIM Line</h3>
                     <p>Designed for premium brands seeking authenticity and differentiation. Our natural denim line evolves with the wearer, creating unique pieces ideal for premium collections and story-driven capsule lines.</p>
+                    <a href="#contact" class="product-action">Request Info</a>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="DenimMezdi (2).png" alt="Recycled Line" class="product-img">
+                <img src="PM (1).jpeg" alt="Recycled Line" class="product-img">
                 <div class="product-overlay">
+                    <span class="product-badge">Sustainable</span>
                     <h3>Recycled / Sustainable Line</h3>
                     <p>Profitable fashion with real impact. The recycled line is perfect for modern fits, allowing you to communicate purpose-driven fashion without driving up costs.</p>
+                    <a href="#contact" class="product-action">Request Info</a>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="DenimMezdi (3).png" alt="High-Performance Line" class="product-img">
+                <img src="PM (2).jpeg" alt="High-Performance Line" class="product-img">
                 <div class="product-overlay">
+                    <span class="product-badge">Performance</span>
                     <h3>High-Performance Line</h3>
                     <p>Technology applied to denim. Engineered for maximum wearer comfort and stretch recovery, this line is a favorite in the fashion-forward and active segments.</p>
+                    <a href="#contact" class="product-action">Request Info</a>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="DenimMezdi (4).png" alt="Industrial & Workwear Line" class="product-img">
+                <img src="PM (3).jpeg" alt="Industrial & Workwear Line" class="product-img">
                 <div class="product-overlay">
+                    <span class="product-badge">Industrial</span>
                     <h3>Industrial & Workwear Line</h3>
-                    <p>Durability that cuts replacement costs. Maximum resilience for demanding environments, generating direct savings for industrial clients. Scan this QR code to download the complete product catalog.</p>
+                    <p>Durability that cuts replacement costs. Maximum resilience for demanding environments, generating direct savings for industrial clients.</p>
+                    <a href="#contact" class="product-action">Download Catalog</a>
                 </div>
             </div>
         </div>
@@ -546,87 +970,150 @@ HTML
         <h2 class="section-title">MEZDI <span>Sustainability Commitment</span></h2>
         <div style="background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05);">
             <h3 style="font-size: 1.4rem; margin-bottom: 20px; line-height: 1.4;">At MEZDI, we are moving toward a more responsible denim industry, integrating innovation, technology, and creativity to guarantee sustainability at every stage—from raw materials to final delivery.</h3>
-            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <li><i class="fa-solid fa-check" style="color: var(--indigo-light); margin-right: 10px;"></i> Responsible Raw Materials: Organic cotton and recycled fibers.</li>
-                <li><i class="fa-solid fa-check" style="color: var(--indigo-light); margin-right: 10px;"></i> Low-Impact Processes: Smart dyeing techniques reducing water.</li>
-                <li><i class="fa-solid fa-check" style="color: var(--indigo-light); margin-right: 10px;"></i> Traceability & Transparency: Detailed batch files.</li>
-                <li><i class="fa-solid fa-check" style="color: var(--indigo-light); margin-right: 10px;"></i> Circular Economy: Closed-loop denim recycling.</li>
-            </ul>
         </div>
-    </section>
 
-    <section id="contact">
-        <h2 class="section-title">CONTACT <span>US</span></h2>
-        <div class="market-location">
-            <div class="market-info">
-                <h3>Get in touch with our Denim Experts</h3>
-                <p style="color:#94A3B8; margin-bottom: 30px;">Fill out the form below or reach out directly via our official channels.</p>
-                
-<!-- Reemplaza el <form> anterior por este, cambiando el código 'xyzkvbdq' por el tuyo real de Formspree -->
-<form action="https://formspree.io/f/xlgyoovq" method="POST" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
-    
-    <!-- Campo Nombre -->
-    <input type="text" name="name" placeholder="Your Name" required 
-           oninvalid="this.setCustomValidity('Please fill out this field.')" 
-           oninput="this.setCustomValidity('')"
-           style="width: 100%; padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: inherit;">
-    
-    <!-- Campo Email -->
-    <input type="email" name="email" placeholder="Your Email" required 
-           oninvalid="this.setCustomValidity('Please enter a valid email address.')" 
-           oninput="this.setCustomValidity('')"
-           style="width: 100%; padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: inherit;">
-    
-    <!-- Campo Mensaje -->
-    <textarea name="message" placeholder="Your Message" rows="4" required 
-              oninvalid="this.setCustomValidity('Please enter your message.')" 
-              oninput="this.setCustomValidity('')"
-              style="width: 100%; padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: inherit; resize: none;"></textarea>
-    
-    <button type="submit" class="btn-modern" style="padding: 12px 25px; font-size: 0.9rem; cursor: pointer; border: none; align-self: flex-start;">Send Message</button>
-</form>
-
-                <ul>
-                    <li><i class="fa-solid fa-envelope"></i>info@mezdi.co</li>
-                    <li><i class="fa-solid fa-phone"></i> +52 (222) 123-4567</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Puebla, México</li>
+        <div class="about-grid" style="margin-top: 30px;">
+            <div class="about-card">
+                <h3>STRATEGY</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="margin-bottom: 16px;"><strong>Responsible Raw Materials:</strong> We promote the use of organic cotton and recycled fibers backed by global sustainability certifications.</li>
+                    <li style="margin-bottom: 16px;"><strong>Low-Impact Processes:</strong> Smart dyeing techniques that drastically reduce water and chemical usage, combined with strict energy efficiency.</li>
+                    <li style="margin-bottom: 16px;"><strong>Traceability & Transparency:</strong> Every batch of denim includes a traceability file, displaying its origin and sustainable processes transparently.</li>
+                    <li style="margin-bottom: 16px;"><strong>Circular Economy:</strong> A focus on denim durability and closed-loop recycling, promoting material reuse.</li>
+                    <li><strong>Culture & Alliances:</strong> Continuous internal sustainability training and collaboration with key industry stakeholders.</li>
                 </ul>
             </div>
-            
-            <div>
-                <h3>MEZDI – Denim Supply Intelligence</h3>
-                <p style="margin-bottom: 15px; color:#94A3B8;">Visit us or coordinate a high-volume shipment from our main operations center.</p>
-                <div class="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.870245795894!2d-98.1572211!3d19.0694417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc1b85d1d4d4f%3A0x83cba12ff22f082e!2sMezdi!5e0!3m2!1ses-419!2smx!4v1783008371900!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <div class="about-card">
+                <h3>MEZDI stands with those looking for a reliable partner to grow.</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="margin-bottom: 12px;">✔ Uniform quality, batch after batch</li>
+                    <li style="margin-bottom: 12px;">✔ Stable, reliable supply</li>
+                    <li style="margin-bottom: 12px;">✔ Specialized technical support</li>
+                    <li style="margin-bottom: 12px;">✔ International financial backing</li>
+                    <li style="margin-bottom: 12px;">✔ Access to multiple manufacturing origins through a single supplier</li>
+                    <li>✔ Faster transit and delivery times</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="clientes">
+    <section id="clients">
         <h2 class="section-title">Strategic <span>Allies</span></h2>
+        <p style="color:#94A3B8; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6;">LI & FUNG · SUNRISE BRANDS · STF GROUP · EL PALACIO DE HIERRO · LIVERPOOL · PEPE JEANS · LUCKY BRAND · OGGI · WALMART · C&A · COPPEL · SILVER PLATE · CIMARRON JEANS · VF · LEE · VOLCOM · ¡AY GÜEY! · CUIDADO CON EL PERRO · MALAYERBA · ANDREA · SHASA · SEXY JEANS</p>
         <div class="slider-container">
             <div class="slider-track">
-                <div class="slide"><img src="denimlab.png" alt="Denim Lab"></div>
-                <div class="slide"><img src="tex.png" alt="Tex-Styling"></div>
-                <div class="slide"><img src="blue.png" alt="Blue Co."></div>
-                <div class="slide">
-                    <video autoplay loop muted playsinline>
-                        <source src="denim.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="slide"><img src="vanguard.png" alt="Vanguard"></div>
-
-                <!-- Repetición duplicados para bucle infinito -->
-                <div class="slide"><img src="denimlab.png" alt="Denim Lab"></div>
-                <div class="slide"><img src="tex.png" alt="Tex-Styling"></div>
-                <div class="slide"><img src="blue.png" alt="Blue Co."></div>
+                <div class="slide"><img src="OIP.jpg" alt="Denim Lab"></div>
+                <div class="slide"><img src="stf-group-logo-xl.png" alt="Tex-Styling"></div>
+                <div class="slide"><img src="el-palacio-de-hierro-logo-png-3.png" alt="Blue Co."></div>
                 <div class="slide">
                     <video autoplay loop muted playsinline>
                         <source src="clientes1.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="slide"><img src="vanguard.png" alt="Vanguard"></div>
+                <div class="slide"><img src="gratis-png-logotipo-de-liverpool-liverpool-f-c-logo-liverpool.png" alt="Vanguard"></div>
+                <div class="slide"><img src="pepe-jeans-logo-pepe-jeans-eyewear-logo-hd.png" alt="Pepe Jeans"></div>
+                <div class="slide"><img src="Lucky Brand.png" alt="Lucky Brand"></div>
+                <div class="slide"><img src="Oggi-Jeans-Logo-Vector.svg-.png" alt="Oggi Jeans"></div>
+                <div class="slide"><img src="c-e-a-logo-0-2048x2048-1.png" alt="CEA"></div>
+                <div class="slide"><img src="silver-plate-jeanswear-logo-png_seeklogo-194644.png" alt="Silver Plate"></div>
+                <div class="slide"><img src="LOGO cimarron.jpeg" alt="Cimarron Jeans"></div>
+                <div class="slide"><img src="png-transparent-lee-hd-logo.png" alt="Lee"></div>
+                <div class="slide"><img src="png-transparent-volcom-hd-logo.png" alt="Volcom"></div>
+                <div class="slide"><img src="ay-guey-logo-png_seeklogo-211509.png" alt="Ay Güey"></div>
+                <div class="slide"><img src="cuidado-con-el-perro-logo-png_seeklogo-366891.png" alt="Cuidado con el Perro"></div>
+                <div class="slide"><img src="SHASA.png" alt="Shasa"></div>
+                <div class="slide"><img src="Sexy-Jeans.jpg" alt="Sexy Jeans"></div>
+                <div class="slide"><img src="MALAYERBA.jpg" alt="Malayerba"></div>
+
+                <!-- Duplicate slides for infinite loop -->
+                <div class="slide"><img src="OIP.jpg" alt="Denim Lab"></div>
+                <div class="slide"><img src="stf-group-logo-xl.png" alt="Tex-Styling"></div>
+                <div class="slide"><img src="el-palacio-de-hierro-logo-png-3.png" alt="Blue Co."></div>
+                <div class="slide">
+                    <video autoplay loop muted playsinline>
+                        <source src="clientes1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="slide"><img src="gratis-png-logotipo-de-liverpool-liverpool-f-c-logo-liverpool.png" alt="Vanguard"></div>
+                <div class="slide"><img src="pepe-jeans-logo-pepe-jeans-eyewear-logo-hd.png" alt="Pepe Jeans"></div>
+                <div class="slide"><img src="Lucky Brand.png" alt="Lucky Brand"></div>
+                <div class="slide"><img src="Oggi-Jeans-Logo-Vector.svg-.png" alt="Oggi Jeans"></div>
+                <div class="slide"><img src="c-e-a-logo-0-2048x2048-1.png" alt="CEA"></div>
+                <div class="slide"><img src="silver-plate-jeanswear-logo-png_seeklogo-194644.png" alt="Silver Plate"></div>
+                <div class="slide"><img src="LOGO cimarron.jpeg" alt="Cimarron Jeans"></div>
+                <div class="slide"><img src="png-transparent-lee-hd-logo.png" alt="Lee"></div>
+                <div class="slide"><img src="png-transparent-volcom-hd-logo.png" alt="Volcom"></div>
+                <div class="slide"><img src="ay-guey-logo-png_seeklogo-211509.png" alt="Ay Güey"></div>
+                <div class="slide"><img src="cuidado-con-el-perro-logo-png_seeklogo-366891.png" alt="Cuidado con el Perro"></div>
+                <div class="slide"><img src="SHASA.png" alt="Shasa"></div>
+                <div class="slide"><img src="Sexy-Jeans.jpg" alt="Sexy Jeans"></div>
+                <div class="slide"><img src="MALAYERBA.jpg" alt="Malayerba"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">CONTACT <span>US</span></h2>
+        <div class="market-location" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+            <div class="market-info" style="max-width: 100%;">
+                <h3>Take the next step with MEZDI</h3>
+                <form action="mailto:pedidos@mezdi.com.mx" method="POST" enctype="text/plain" class="contact-form" aria-label="Contact form">
+                    <label class="sr-only" for="contact-name">Nombre</label>
+                    <input id="contact-name" class="contact-input" type="text" name="name" placeholder="Your Name" required
+                        oninvalid="this.setCustomValidity('Please fill out this field.')"
+                        oninput="this.setCustomValidity('')">
+
+                    <label class="sr-only" for="contact-email">Correo electrónico</label>
+                    <input id="contact-email" class="contact-input" type="email" name="email" placeholder="Your Email" required
+                        oninvalid="this.setCustomValidity('Please enter a valid email address.')"
+                        oninput="this.setCustomValidity('')">
+
+                    <label class="sr-only" for="contact-company">Company</label>
+                    <input id="contact-company" class="contact-input" type="text" name="company" placeholder="Company (optional)">
+
+                    <label class="sr-only" for="contact-message">Mensaje</label>
+                    <textarea id="contact-message" class="contact-textarea" name="message" placeholder="Your Message" required
+                        oninvalid="this.setCustomValidity('Please enter your message.')"
+                        oninput="this.setCustomValidity('')"></textarea>
+
+                    <button type="submit" class="btn-modern contact-submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="market-info contact-info" style="max-width: 100%;">
+                <h3 style="margin-bottom: 20px;">Take the next step with MEZDI</h3>
+                <ul style="list-style: none; padding-left: 0; margin-top: 0; color: #94A3B8; line-height: 1.9;">
+                    <li style="margin-bottom: 18px;">· <strong>Access the MEZDI Connect Portal™</strong></li>
+                    <li style="margin-bottom: 18px;">· Download the full catalog and start a unique sourcing experience.</li>
+                    <li style="margin-bottom: 24px;">· Or, if you prefer, schedule a meeting with our commercial partners</li>
+                </ul>
+
+                <p style="margin-bottom: 8px; font-size: 1rem;"><i class="fa-solid fa-envelope" style="margin-right: 10px; color: #7c3aed;"></i><strong>Email:</strong> <a href="mailto:pedidos@mezdi.com.mx" style="color: #ffffff; text-decoration: underline;">pedidos@mezdi.com.mx</a></p>
+                <p style="margin-bottom: 24px; font-size: 1rem;"><i class="fa-brands fa-whatsapp" style="margin-right: 10px; color: #10b981;"></i><strong>WhatsApp / WeChat:</strong> +52 222 484 0212</p>
+
+                <p style="font-weight: 600; margin-bottom: 12px;">USA · MEXICO · CHINA · HONG KONG · LATAM</p>
+                <p><a href="http://www.mezdi.co/" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">www.mezdi.co</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-word">
+        <h2 class="section-title">AT MEZDI, <span>OUR WORD AND EXPERIENCE COUNT</span></h2>
+        <div style="background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <div style="display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 30px; align-items: start;">
+                <div>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 24px;">We understand that trust is the cornerstone of business. That’s why every commitment we make is backed by over 20 years of experience in the denim industry, proven quality control processes, and a highly specialized global team.</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 12px;">·&nbsp;&nbsp;&nbsp;Manufacturing facilities in Mexico since 2012</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 12px;">·&nbsp;&nbsp;&nbsp;Manufacturing facilities in China since 2022</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 12px;">·&nbsp;&nbsp;&nbsp;Logistics hub in Panama</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 12px;">·&nbsp;&nbsp;&nbsp;Financial and logistics hub in Hong Kong</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 12px;">·&nbsp;&nbsp;&nbsp;Consistent year-over-year growth</p>
+                    <p style="font-size: 1rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 24px;">·&nbsp;&nbsp;&nbsp;Agile adaptability to global market shifts</p>
+                    <p style="font-size: 1rem; color: #ffffff; line-height: 1.8; font-weight: 700;">MEZDI is not a promise; it is a commitment.</p>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src="PM (4).png" alt="MEZDI fabric preview" style="width: 100%; max-width: 320px; border-radius: 20px; box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22); object-fit: cover;" />
+                </div>
             </div>
         </div>
     </section>
@@ -635,31 +1122,80 @@ HTML
         <p>&copy; 2026 MEZDI. All rights reserved. We don't just make denim. We build value for your business.</p>
     </footer>
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/522221234567?text=Hola,%20estoy%20interesado%20en%20el%20catálogo%20de%20MEZDI" 
-       target="_blank" 
-       style="position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none; transition: transform 0.3s;">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <div class="floating-chat-group">
+        <a href="https://t.me/mezdi" target="_blank" class="floating-chat-link telegram" aria-label="Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="https://wa.me/522221234567?text=Hello,%20I%20am%20interested%20in%20the%20MEZDI%20catalog" target="_blank" class="floating-chat-link whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
 
     <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            const isExpanded = nav.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+            menuToggle.querySelector('i').classList.toggle('fa-bars', !isExpanded);
+            menuToggle.querySelector('i').classList.toggle('fa-xmark', isExpanded);
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-xmark');
+                }
+            });
+        });
+
+        const zoomImages = document.querySelectorAll('.integrates-image img, .product-card .product-img');
+        zoomImages.forEach(img => {
+            img.addEventListener('mousemove', e => {
+                const rect = img.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                img.style.transformOrigin = `${x}% ${y}%`;
+                img.style.transform = 'scale(1.22)';
+            });
+
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = '';
+                img.style.transformOrigin = 'center center';
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-xmark');
+            }
+        });
+
         window.addEventListener('scroll', () => {
             let sections = document.querySelectorAll('section');
-            let navLinks = document.querySelectorAll('nav ul li a');
-            
+            let top = window.scrollY;
+
             sections.forEach(sec => {
-                let top = window.scrollY;
                 let offset = sec.offsetTop - 150;
                 let height = sec.offsetHeight;
                 let id = sec.getAttribute('id');
-                
+
                 if(top >= offset && top < offset + height) {
                     navLinks.forEach(links => {
                         links.classList.remove('active');
-                        let targetLink = document.querySelector('nav ul li a[href*=' + id + ']');
-                        if(targetLink) targetLink.classList.add('active');
                     });
-                };
+                    let targetLink = document.querySelector('nav ul li a[href="#' + id + '"]');
+                    if(targetLink) targetLink.classList.add('active');
+                }
             });
         });
     </script>
