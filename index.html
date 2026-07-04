@@ -35,6 +35,16 @@ HTML
             background-color: var(--indigo-dark);
             color: var(--white);
             overflow-x: hidden;
+            cursor: url("logo mezdi.ico") 16 16, auto;
+        }
+
+        html, body, a, button, .menu-toggle, .product-action, .contact-submit {
+            cursor: url("logo mezdi.ico") 16 16, pointer;
+        }
+
+        input,
+        textarea {
+            cursor: text;
         }
 
         h1, h2, h3 {
@@ -374,7 +384,7 @@ HTML
         }
 
         .integrates-image:hover img {
-            transform: scale(1.08);
+            transform: scale(2);
         }
 
         .about-card {
@@ -438,7 +448,7 @@ HTML
         }
 
         .product-card:hover .product-img {
-            transform: scale(1.08);
+            transform: scale(2);
         }
 
         .product-overlay .product-badge {
@@ -654,6 +664,18 @@ HTML
         @keyframes scrollInfinito {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-50% - 15px)); }
+        }
+
+        /* --- TABLET RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            header { padding: 20px 30px; }
+            .hero-content h1 { font-size: 3.4rem; }
+            .hero-content p { font-size: 1.05rem; }
+            .catalog-grid { gap: 24px; }
+            .product-card { height: 360px; }
+            .about-container, .market-location { grid-template-columns: 1fr; gap: 30px; }
+            .about-video-box, .map-box { height: auto; }
+            section { padding: 60px 6%; }
         }
 
         /* --- RESPONSIVE --- */
@@ -1177,7 +1199,7 @@ HTML
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
                 const y = ((e.clientY - rect.top) / rect.height) * 100;
                 img.style.transformOrigin = `${x}% ${y}%`;
-                img.style.transform = 'scale(1.22)';
+                img.style.transform = 'scale(2)';
             });
 
             img.addEventListener('mouseleave', () => {
@@ -1192,6 +1214,12 @@ HTML
                 menuToggle.setAttribute('aria-expanded', 'false');
                 menuToggle.querySelector('i').classList.add('fa-bars');
                 menuToggle.querySelector('i').classList.remove('fa-xmark');
+            }
+        });
+
+        window.addEventListener('load', () => {
+            if (!window.location.hash || window.location.hash === '#home') {
+                window.scrollTo(0, 0);
             }
         });
 
